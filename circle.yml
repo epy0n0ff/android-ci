@@ -2,9 +2,6 @@ machine:
   java:
     version: openjdk7
 dependencies:
-  cache_directories:
-    - ~/.android
-    - /usr/local/android-sdk-linux
   pre:
   # filter name list command: `android list sdk --no-ui --all -e`
     - if [[ ! -e $ANDROID_HOME/platforms/android-23 ]]; then echo y | android update sdk --no-ui --all --filter "android-23"; fi
