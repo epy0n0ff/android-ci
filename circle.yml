@@ -6,7 +6,13 @@ dependencies:
     - ~/.android
     - /usr/local/android-sdk-linux
   pre:
-    - echo y | android update sdk --no-ui --all --filter "platform-tools, tools, android-23, build-tools-23.0.1, extra-android-m2repository, extra-android-support, extra-google-m2repository"
+  # filter name list command: `android list sdk --no-ui --all -e`
+    - if [[ ! -e $ANDROID_HOME/platforms/android-23 ]]; then echo y | android update sdk --no-ui --all --filter "android-23"; fi
+    - if [[ ! -e $ANDROID_HOME/build-tools/23.0.1 ]]; then echo y | android update sdk --no-ui --all --filter "build-tools-23.0.1"; fi
+    - if [[ ! -e $ANDROID_HOME/extras/android/m2repository ]]; then echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"; fi
+    - if [[ ! -e $ANDROID_HOME/extras/android/support ]]; then echo y | android update sdk --no-ui --all --filter "extra-android-support"; fi
+    - if [[ ! -e $ANDROID_HOME/extras/google/m2repository ]]; then echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"; fi
+    - if [[ ! -e $ANDROID_HOME/extras/google/google_play_services ]]; then echo y | android update sdk --no-ui --all --filter "extra-google-google_play_services"; fi
 test:
   override:
   # run robolectric test
