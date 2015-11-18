@@ -18,6 +18,9 @@ dependencies:
 test:
   override:
     - ./gradlew -i test
+    - ./gradlew assemble
   post:
+    - mkdir -p $CIRCLE_ARTIFACTS/apk/
     - mkdir -p $CIRCLE_TEST_REPORTS/tests/reports/
+    - cp -R ./app/build/outputs/apk/* $CIRCLE_ARTIFACTS/apk/
     - cp -R ./app/build/reports/tests/* $CIRCLE_TEST_REPORTS/tests/reports/
