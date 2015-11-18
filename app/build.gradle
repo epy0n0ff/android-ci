@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
 
 android {
   compileSdkVersion 23
@@ -24,13 +25,22 @@ android {
 }
 
 dependencies {
+  def jetbrainsDependencies = rootProject.jetbrainsDependencies
+  def testDependencies = rootProject.testdependencies
+
   compile fileTree(dir: 'libs', include: ['*.jar'])
   compile 'com.android.support:appcompat-v7:23.1.0'
   compile 'io.reactivex:rxandroid:1.0.1'
 
-  androidTestCompile "junit:junit:4.12"
-  androidTestCompile "org.robolectric:robolectric:3.0"
+  // Kotlin support
+  compile jetbrainsDependencies.kotlinStdlib
+  compile jetbrainsDependencies.ankoSdk23
+  compile jetbrainsDependencies.ankoSuportV4
 
-  testCompile "junit:junit:4.12"
-  testCompile "org.robolectric:robolectric:3.0"
+
+  androidTestCompile testDependencies.junit
+  androidTestCompile testDependencies.robolectric
+
+  testCompile testDependencies.junit
+  testCompile testDependencies.robolectric
 }

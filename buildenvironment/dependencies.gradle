@@ -1,0 +1,20 @@
+allprojects {
+  ext {
+    // ref:https://jcenter.bintray.com/org/jetbrains/anko/
+    ankoVersion = '0.7.3'
+
+    jetbrainsDependencies = [
+        kotlinStdlib:"org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
+        ankoSdk23:"org.jetbrains.anko:anko-sdk23:${ankoVersion}",
+        ankoSuportV4:"org.jetbrains.anko:anko-support-v4:${ankoVersion}",
+    ]
+
+    junitVersion = '4.12'
+    robolectricVersion = '3.0'
+
+    testdependencies = [
+        junit:"junit:junit:${junitVersion}",
+        robolectric:"org.robolectric:robolectric:${robolectricVersion}"
+    ]
+  }
+}
