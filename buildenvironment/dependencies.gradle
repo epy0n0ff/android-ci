@@ -1,11 +1,17 @@
 allprojects {
   ext {
+    // Android
+    androidBuildToolsVersion = '23.0.1'
+    androidCompileSdkVersion = 23
+    androidMinSdkVersion = 15
+    androidTargetSdkVersion = 23
+
     // ref:https://jcenter.bintray.com/org/jetbrains/anko/
     ankoVersion = '0.7.3'
 
     jetbrainsDependencies = [
         kotlinStdlib:"org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}",
-        ankoSdk23:"org.jetbrains.anko:anko-sdk23:${ankoVersion}",
+        ankoSdk:"org.jetbrains.anko:anko-sdk15:${ankoVersion}",
         ankoSuportV4:"org.jetbrains.anko:anko-support-v4:${ankoVersion}",
     ]
 

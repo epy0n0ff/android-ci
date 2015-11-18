@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 android {
-  compileSdkVersion 23
-  buildToolsVersion "23.0.1"
+  compileSdkVersion rootProject.androidCompileSdkVersion
+  buildToolsVersion rootProject.androidBuildToolsVersion
 
   defaultConfig {
     applicationId "com.epy0n0ff.ci"
-    minSdkVersion 14
-    targetSdkVersion 23
+    minSdkVersion rootProject.androidMinSdkVersion
+    targetSdkVersion rootProject.androidTargetSdkVersion
     versionCode 1
     versionName "1.0"
   }
@@ -34,7 +34,7 @@ dependencies {
 
   // Kotlin support
   compile jetbrainsDependencies.kotlinStdlib
-  compile jetbrainsDependencies.ankoSdk23
+  compile jetbrainsDependencies.ankoSdk
   compile jetbrainsDependencies.ankoSuportV4
 
 
