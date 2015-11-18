@@ -1,21 +1,22 @@
 machine:
+  timezone: Asia/Tokyo
   java:
-    version: openjdk7
+    version: oraclejdk8
+
 dependencies:
   cache_directories:
-    - $ANDROID_HOME/platforms/android-23
-    - $ANDROID_HOME/build-tools/23.0.1
+    - /usr/local/android-sdk-linux/platforms/android-23
+    - /usr/local/android-sdk-linux/build-tools/23.0.1
+    - /usr/local/android-sdk-linux/extras/android
+    - /usr/local/android-sdk-linux/extras/google
   pre:
-  # filter name list command: `android list sdk --no-ui --all -e`
     - if [[ ! -e $ANDROID_HOME/platforms/android-23 ]]; then echo y | android update sdk --no-ui --all --filter "android-23"; fi
     - if [[ ! -e $ANDROID_HOME/build-tools/23.0.1 ]]; then echo y | android update sdk --no-ui --all --filter "build-tools-23.0.1"; fi
-  #  - if [[ ! -e $ANDROID_HOME/extras/android/m2repository ]]; then echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"; fi
-  #  - if [[ ! -e $ANDROID_HOME/extras/android/support ]]; then echo y | android update sdk --no-ui --all --filter "extra-android-support"; fi
-  #  - if [[ ! -e $ANDROID_HOME/extras/google/m2repository ]]; then echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"; fi
-  #  - if [[ ! -e $ANDROID_HOME/extras/google/google_play_services ]]; then echo y | android update sdk --no-ui --all --filter "extra-google-google_play_services"; fi
+    - if [[ ! -e $ANDROID_HOME/extras/android ]]; then echo y | android update sdk --no-ui --all --filter "extra-android-m2repository"; fi
+    - if [[ ! -e $ANDROID_HOME/extras/google ]]; then echo y | android update sdk --no-ui --all --filter "extra-google-m2repository"; fi
+
 test:
   override:
-  # run robolectric test
     - ./gradlew -i test
   post:
     - mkdir -p $CIRCLE_TEST_REPORTS/tests/reports/
