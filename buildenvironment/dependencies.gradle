@@ -6,6 +6,12 @@ allprojects {
     androidMinSdkVersion = 15
     androidTargetSdkVersion = 23
 
+    rxAndroidVersion = '1.0.1'
+
+    rxDependencies = [
+        rxAndroid:"io.reactivex:rxandroid:${rxAndroidVersion}"
+    ]
+
     // ref:https://jcenter.bintray.com/org/jetbrains/anko/
     ankoVersion = '0.7.3'
 
