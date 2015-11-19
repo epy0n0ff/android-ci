@@ -2,5 +2,12 @@
 This repository is Android Test Sample which runs on CircleCI.
 
 Contains:
+ - Kotlin
  - RxAndroid
  - Robolectric
+ 
+Require plugins:
+  - Kotlin
+  - Kotlin Extensions For Android
+
+![Plugins](art/as-plugins.png?raw=true)

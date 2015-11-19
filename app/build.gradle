@@ -47,3 +47,12 @@ dependencies {
   testCompile testDependencies.junit
   testCompile testDependencies.robolectric
 }
+
+buildscript {
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-android-extensions:${kotlinVersion}"
+  }
+}
