@@ -1,5 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.getkeepsafe.dexcount'
 
 android {
   compileSdkVersion rootProject.androidCompileSdkVersion
@@ -26,6 +27,17 @@ android {
       it.java.srcDirs += "src/${it.name}/kotlin"
     }
   }
+}
+
+dexcount {
+  // default values
+  includeClasses = false
+  includeFieldCount = true
+  // not yet in a release build
+  // includeTotalMethodCount = false
+  printAsTree = false
+  orderByMethodCount = false
+  verbose = false
 }
 
 dependencies {
